@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI RAG Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI Document Assistant</h1>
+            <p class="subtitle">Ask questions about your PDF documents</p>
+        </header>
+
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages">
+                <div class="welcome-message">
+                    <h2>Welcome! 👋</h2>
+                    <p>I can help you find information from your uploaded PDF documents.</p>
+                    <p>Start by asking a question about your documents.</p>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="user-input" 
+                        placeholder="Type your question here..." 
+                        rows="1"
+                    ></textarea>
+                    <button id="send-button" class="send-button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="options-bar">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="use-rag" checked>
+                        <span>Use document context</span>
+                    </label>
+                    <button id="clear-chat" class="clear-button">Clear Chat</button>
+                    <button id="new-session" class="new-session-button">New Session</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="stats">
+                <span id="session-id">Session: Loading...</span>
+                <span id="active-sessions">Active Sessions: 0</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
